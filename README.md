@@ -1,5 +1,5 @@
 <h1 align="center">Great-Anthony Umukoro</h1>
-<h3 align="center">AI, backend, and full-stack engineer shipping React + FastAPI products</h3>
+<h3 align="center">DevOps-focused developer with experience in AI, backend, and full-stack engineering</h3>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/greatops/">
@@ -14,7 +14,7 @@
 
 ## About Me
 
-I build AI-powered and full-stack products with a strong backend foundation, focusing on practical systems that combine clean user experiences, reliable APIs, and real-world problem solving. My recent work spans React, FastAPI, AI integrations, cloud deployment, and data-backed applications.
+I'm a developer focused on growing into DevOps while building across the full stack. My work includes AI integrations, backend APIs, frontend applications, and deployment-oriented projects, with an emphasis on reliability, automation, and practical software that solves real problems.
 
 ---
 
