@@ -64,3 +64,25 @@ I build AI-powered and full-stack products with a strong backend foundation, foc
   <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
   <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
 </p>
+
+---
+
+## GitHub Stats
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=GreatlyDev&theme=tokyonight&hide_border=true&border_radius=10&card_width=700" alt="GitHub streak stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GreatlyDev&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&size_weight=0.5&count_weight=0.5&custom_title=Most%20Used%20Languages" alt="Most used languages" />
+</p>
+
+<p align="center"><strong>Contribution Graph</strong></p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GreatlyDev/GreatlyDev/output/pacman-contribution-graph-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GreatlyDev/GreatlyDev/output/pacman-contribution-graph.svg">
+    <img alt="Pac-Man contribution graph" src="https://raw.githubusercontent.com/GreatlyDev/GreatlyDev/output/pacman-contribution-graph.svg">
+  </picture>
+</p>
