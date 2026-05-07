@@ -1,4 +1,4 @@
-name: generate pacman graph
+name: generate profile assets
 
 on:
   schedule:
@@ -13,13 +13,31 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests
+        run: python -m unittest tests/test_generate_profile_stats.py -v
+
       - name: Generate Pac-Man contribution graph
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: ${{ github.repository_owner }}
+
+      - name: Generate profile stats assets
+        env:
+          PROFILE_STATS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_STATS_USERNAME: GreatlyDev
+          PROFILE_STATS_OUTPUT_DIR: dist/generated
+        run: python scripts/generate_profile_stats.py
 
       - name: Push SVG assets to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
