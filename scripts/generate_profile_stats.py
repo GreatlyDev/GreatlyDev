@@ -214,33 +214,33 @@ def last_365_total(entries: list[dict[str, Any]], today: date | None = None) -> 
 def render_stats_svg(total: int, current: dict[str, Any], longest: dict[str, Any]) -> str:
     current_range = escape(format_date_range(current))
     longest_range = escape(format_date_range(longest))
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" role="img" aria-labelledby="title desc">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="760" height="205" viewBox="0 0 760 205" role="img" aria-labelledby="title desc">
   <title id="title">GitHub stats</title>
   <desc id="desc">Total contributions {total}, current streak {current['length']}, longest streak {longest['length']}.</desc>
-  <rect x="10" y="10" width="880" height="230" rx="18" fill="{CARD_BACKGROUND}"/>
-  <line x1="300" y1="35" x2="300" y2="215" stroke="#3b4252" stroke-width="2"/>
-  <line x1="600" y1="35" x2="600" y2="215" stroke="#3b4252" stroke-width="2"/>
-  <text x="150" y="95" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="38" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{total}</text>
-  <text x="150" y="135" text-anchor="middle" fill="{CARD_TEXT}" font-size="24" font-family="Segoe UI, Arial, sans-serif">Total Contributions</text>
-  <text x="150" y="175" text-anchor="middle" fill="{CARD_ACCENT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">Last 365 days</text>
-  <circle cx="450" cy="90" r="48" fill="none" stroke="{CARD_PRIMARY}" stroke-width="8"/>
-  <text x="450" y="102" text-anchor="middle" fill="#c084fc" font-size="38" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{current['length']}</text>
-  <text x="450" y="165" text-anchor="middle" fill="{CARD_TEXT}" font-size="24" font-family="Segoe UI, Arial, sans-serif">Current Streak</text>
-  <text x="450" y="198" text-anchor="middle" fill="{CARD_ACCENT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">{current_range}</text>
-  <text x="750" y="95" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="38" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{longest['length']}</text>
-  <text x="750" y="135" text-anchor="middle" fill="{CARD_TEXT}" font-size="24" font-family="Segoe UI, Arial, sans-serif">Longest Streak</text>
-  <text x="750" y="175" text-anchor="middle" fill="{CARD_ACCENT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">{longest_range}</text>
+  <rect x="10" y="10" width="740" height="185" rx="14" fill="{CARD_BACKGROUND}"/>
+  <line x1="253" y1="30" x2="253" y2="175" stroke="#3b4252" stroke-width="2"/>
+  <line x1="507" y1="30" x2="507" y2="175" stroke="#3b4252" stroke-width="2"/>
+  <text x="127" y="79" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="31" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{total}</text>
+  <text x="127" y="112" text-anchor="middle" fill="{CARD_TEXT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">Total Contributions</text>
+  <text x="127" y="145" text-anchor="middle" fill="{CARD_ACCENT}" font-size="17" font-family="Segoe UI, Arial, sans-serif">Last 365 days</text>
+  <circle cx="380" cy="74" r="39" fill="none" stroke="{CARD_PRIMARY}" stroke-width="7"/>
+  <text x="380" y="84" text-anchor="middle" fill="#c084fc" font-size="31" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{current['length']}</text>
+  <text x="380" y="136" text-anchor="middle" fill="{CARD_TEXT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">Current Streak</text>
+  <text x="380" y="164" text-anchor="middle" fill="{CARD_ACCENT}" font-size="17" font-family="Segoe UI, Arial, sans-serif">{current_range}</text>
+  <text x="633" y="79" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="31" font-family="Segoe UI, Arial, sans-serif" font-weight="700">{longest['length']}</text>
+  <text x="633" y="112" text-anchor="middle" fill="{CARD_TEXT}" font-size="20" font-family="Segoe UI, Arial, sans-serif">Longest Streak</text>
+  <text x="633" y="145" text-anchor="middle" fill="{CARD_ACCENT}" font-size="17" font-family="Segoe UI, Arial, sans-serif">{longest_range}</text>
 </svg>"""
 
 
 def render_languages_svg(languages: list[dict[str, Any]]) -> str:
     top = languages[:6]
     total = sum(item["bytes"] for item in top) or 1
-    bar_x = 80
-    bar_y = 70
-    bar_width = 520
-    bar_height = 16
-    legend_y = 120
+    bar_x = 65
+    bar_y = 58
+    bar_width = 430
+    bar_height = 13
+    legend_y = 100
     segments = []
     legends = []
     current_x = bar_x
@@ -253,16 +253,16 @@ def render_languages_svg(languages: list[dict[str, Any]]) -> str:
             f'<rect x="{current_x}" y="{bar_y}" width="{width}" height="{bar_height}" rx="4" fill="{color}"/>'
         )
         legends.append(
-            f'<circle cx="{95 + (index % 2) * 255}" cy="{legend_y + (index // 2) * 38}" r="6" fill="{color}"/>'
-            f'<text x="{110 + (index % 2) * 255}" y="{legend_y + 6 + (index // 2) * 38}" fill="{CARD_TEXT}" font-size="18" font-family="Segoe UI, Arial, sans-serif">{escape(item["name"])} {percent:.2f}%</text>'
+            f'<circle cx="{78 + (index % 2) * 210}" cy="{legend_y + (index // 2) * 31}" r="5" fill="{color}"/>'
+            f'<text x="{91 + (index % 2) * 210}" y="{legend_y + 5 + (index // 2) * 31}" fill="{CARD_TEXT}" font-size="15" font-family="Segoe UI, Arial, sans-serif">{escape(item["name"])} {percent:.2f}%</text>'
         )
         current_x += width
 
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="700" height="260" viewBox="0 0 700 260" role="img" aria-labelledby="title desc">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="560" height="205" viewBox="0 0 560 205" role="img" aria-labelledby="title desc">
   <title id="title">Most used languages</title>
   <desc id="desc">Top languages aggregated from owned public repositories.</desc>
-  <rect x="10" y="10" width="680" height="240" rx="18" fill="{CARD_BACKGROUND}"/>
-  <text x="350" y="46" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="34" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Most Used Languages</text>
+  <rect x="10" y="10" width="540" height="185" rx="14" fill="{CARD_BACKGROUND}"/>
+  <text x="280" y="40" text-anchor="middle" fill="{CARD_PRIMARY}" font-size="27" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Most Used Languages</text>
   {''.join(segments)}
   {''.join(legends)}
 </svg>"""
