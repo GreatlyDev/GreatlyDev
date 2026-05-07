@@ -62,11 +62,11 @@ I'm a developer focused on growing into DevOps while building across the full st
 ## GitHub Stats
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=GreatlyDev&theme=tokyonight&hide_border=true&border_radius=10&card_width=700" alt="GitHub streak stats" />
+  <img src="https://raw.githubusercontent.com/GreatlyDev/GreatlyDev/output/generated/github-stats.svg" alt="GitHub stats" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GreatlyDev&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&size_weight=0.5&count_weight=0.5&custom_title=Most%20Used%20Languages" alt="Most used languages" />
+  <img src="https://raw.githubusercontent.com/GreatlyDev/GreatlyDev/output/generated/top-languages.svg" alt="Most used languages" />
 </p>
 
 <p align="center"><strong>Contribution Graph</strong></p>
