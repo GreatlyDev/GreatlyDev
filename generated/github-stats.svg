@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="175" viewBox="0 0 660 175" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub stats</title>
+  <desc id="desc">Total contributions 480, current streak 2, longest streak 36.</desc>
+  <rect x="10" y="10" width="640" height="155" rx="12" fill="#1f2230"/>
+  <line x1="220" y1="26" x2="220" y2="148" stroke="#3b4252" stroke-width="2"/>
+  <line x1="440" y1="26" x2="440" y2="148" stroke="#3b4252" stroke-width="2"/>
+  <text x="110" y="68" text-anchor="middle" fill="#70a5fd" font-size="27" font-family="Segoe UI, Arial, sans-serif" font-weight="700">480</text>
+  <text x="110" y="96" text-anchor="middle" fill="#d6d9e6" font-size="17" font-family="Segoe UI, Arial, sans-serif">Total Contributions</text>
+  <text x="110" y="124" text-anchor="middle" fill="#4fd1c5" font-size="14" font-family="Segoe UI, Arial, sans-serif">Last 365 days</text>
+  <circle cx="330" cy="63" r="32" fill="none" stroke="#70a5fd" stroke-width="6"/>
+  <text x="330" y="72" text-anchor="middle" fill="#c084fc" font-size="27" font-family="Segoe UI, Arial, sans-serif" font-weight="700">2</text>
+  <text x="330" y="116" text-anchor="middle" fill="#d6d9e6" font-size="17" font-family="Segoe UI, Arial, sans-serif">Current Streak</text>
+  <text x="330" y="140" text-anchor="middle" fill="#4fd1c5" font-size="14" font-family="Segoe UI, Arial, sans-serif">May 15 - May 16</text>
+  <text x="550" y="68" text-anchor="middle" fill="#70a5fd" font-size="27" font-family="Segoe UI, Arial, sans-serif" font-weight="700">36</text>
+  <text x="550" y="96" text-anchor="middle" fill="#d6d9e6" font-size="17" font-family="Segoe UI, Arial, sans-serif">Longest Streak</text>
+  <text x="550" y="124" text-anchor="middle" fill="#4fd1c5" font-size="14" font-family="Segoe UI, Arial, sans-serif">Mar 26 - Apr 30</text>
+</svg>
