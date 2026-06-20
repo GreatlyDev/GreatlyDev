@@ -34,7 +34,9 @@ jobs:
 
       - name: Generate profile stats assets
         env:
-          PROFILE_STATS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Add a repo secret named PROFILE_STATS_TOKEN with a personal token
+          # if you want private contribution counts to match your GitHub profile.
+          PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN || secrets.GITHUB_TOKEN }}
           PROFILE_STATS_USERNAME: GreatlyDev
           PROFILE_STATS_OUTPUT_DIR: dist/generated
         run: python scripts/generate_profile_stats.py

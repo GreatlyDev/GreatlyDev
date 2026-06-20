@@ -5,7 +5,7 @@ from html import escape
 import json
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 from urllib import parse, request
 
 
@@ -192,6 +192,13 @@ def load_languages_for_repos(token: str, repos: list[dict[str, Any]]) -> list[di
     return enriched
 
 
+def resolve_profile_stats_token(environ: Mapping[str, str] = os.environ) -> str:
+    token = environ.get("PROFILE_STATS_TOKEN") or environ.get("GITHUB_TOKEN")
+    if not token:
+        raise RuntimeError("Set PROFILE_STATS_TOKEN or GITHUB_TOKEN to generate profile stats.")
+    return token
+
+
 def format_date_range(summary: dict[str, Any]) -> str:
     if not summary["start"] or not summary["end"]:
         return "No active streak"
@@ -274,7 +281,7 @@ def write_file(path: Path, content: str) -> None:
 
 
 def main() -> None:
-    token = os.environ["PROFILE_STATS_TOKEN"]
+    token = resolve_profile_stats_token()
     username = os.environ.get("PROFILE_STATS_USERNAME", "GreatlyDev")
     output_dir = Path(os.environ.get("PROFILE_STATS_OUTPUT_DIR", "dist/generated"))
 

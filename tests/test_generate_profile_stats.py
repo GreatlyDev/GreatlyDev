@@ -5,6 +5,7 @@ from scripts.generate_profile_stats import (
     aggregate_languages,
     calculate_streaks,
     normalize_day_entries,
+    resolve_profile_stats_token,
 )
 
 
@@ -60,6 +61,20 @@ class AggregateLanguagesTests(unittest.TestCase):
         self.assertEqual(result[1]["name"], "TypeScript")
         self.assertEqual(result[2]["name"], "HTML")
         self.assertEqual(result[3]["name"], "JavaScript")
+
+
+class ResolveProfileStatsTokenTests(unittest.TestCase):
+    def test_prefers_profile_stats_token_over_github_token(self) -> None:
+        token = resolve_profile_stats_token(
+            {"PROFILE_STATS_TOKEN": "profile-token", "GITHUB_TOKEN": "github-token"}
+        )
+
+        self.assertEqual(token, "profile-token")
+
+    def test_falls_back_to_github_token(self) -> None:
+        token = resolve_profile_stats_token({"GITHUB_TOKEN": "github-token"})
+
+        self.assertEqual(token, "github-token")
 
 
 if __name__ == "__main__":
