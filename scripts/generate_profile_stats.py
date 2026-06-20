@@ -98,6 +98,34 @@ def contribution_days_for_year(token: str, username: str, year: int) -> list[dic
     return days
 
 
+def contribution_collection_for_range(
+    token: str, username: str, start_date: date, end_date: date
+) -> dict[str, Any]:
+    start = f"{start_date.isoformat()}T00:00:00Z"
+    end = f"{end_date.isoformat()}T23:59:59Z"
+    query = """
+    query($login: String!, $from: DateTime!, $to: DateTime!) {
+      user(login: $login) {
+        contributionsCollection(from: $from, to: $to) {
+          restrictedContributionsCount
+          contributionCalendar {
+            totalContributions
+          }
+        }
+      }
+    }
+    """
+    data = graphql_request(token, query, {"login": username, "from": start, "to": end})
+    return data["user"]["contributionsCollection"]
+
+
+def contribution_total_from_collection(collection: Mapping[str, Any]) -> int:
+    calendar = collection.get("contributionCalendar", {})
+    return int(calendar.get("totalContributions", 0)) + int(
+        collection.get("restrictedContributionsCount", 0)
+    )
+
+
 def normalize_day_entries(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     normalized = [{"date": str(item["date"]), "count": int(item["count"])} for item in entries]
     normalized.sort(key=lambda item: item["date"])
@@ -284,6 +312,7 @@ def main() -> None:
     token = resolve_profile_stats_token()
     username = os.environ.get("PROFILE_STATS_USERNAME", "GreatlyDev")
     output_dir = Path(os.environ.get("PROFILE_STATS_OUTPUT_DIR", "dist/generated"))
+    today = datetime.now(timezone.utc).date()
 
     day_entries: list[dict[str, Any]] = []
     for year in contribution_years(token, username):
@@ -291,7 +320,9 @@ def main() -> None:
 
     normalized_days = normalize_day_entries(day_entries)
     streaks = calculate_streaks(normalized_days)
-    total = last_365_total(normalized_days)
+    rolling_start = today - timedelta(days=364)
+    rolling_collection = contribution_collection_for_range(token, username, rolling_start, today)
+    total = contribution_total_from_collection(rolling_collection)
 
     repos = fetch_owned_public_repos(token, username)
     language_repos = load_languages_for_repos(token, repos)

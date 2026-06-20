@@ -4,6 +4,7 @@ import unittest
 from scripts.generate_profile_stats import (
     aggregate_languages,
     calculate_streaks,
+    contribution_total_from_collection,
     normalize_day_entries,
     resolve_profile_stats_token,
 )
@@ -61,6 +62,16 @@ class AggregateLanguagesTests(unittest.TestCase):
         self.assertEqual(result[1]["name"], "TypeScript")
         self.assertEqual(result[2]["name"], "HTML")
         self.assertEqual(result[3]["name"], "JavaScript")
+
+
+class ContributionTotalTests(unittest.TestCase):
+    def test_adds_restricted_contributions_to_calendar_total(self) -> None:
+        collection = {
+            "restrictedContributionsCount": 155,
+            "contributionCalendar": {"totalContributions": 713},
+        }
+
+        self.assertEqual(contribution_total_from_collection(collection), 868)
 
 
 class ResolveProfileStatsTokenTests(unittest.TestCase):
